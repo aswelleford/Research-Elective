@@ -1,0 +1,17 @@
+# Import pandas
+import pandas as pd
+# Define paths for source data and destination
+filepath = 'C:\Users\Andrew\Documents\Python for Research\Practice Project\Axon Regeneration.txt'
+filedestination = 'C:\Users\Andrew\Documents\Python for Research\Practice Project\Axon Regeneration Spreadsheet.xlsx'
+# Store each line of the source data as elements in a list titled linelist
+with open(filepath,'r') as file1:
+	linelist = list(file1)
+# Creat blank list splitlist
+splitlist = []
+# Iterate through linelist, strip new line characters, and add each line as a list element to the list splitlist
+for i in linelist:
+	i.strip('\n')
+    splitlist.append(i.split('\t'))
+# Creat Pandas DataFrame from splitlist and convert it to a csv in the filedestination path
+df = pd.DataFrame(splitlist)
+df.to_csv(filedestination, index=False, header=False)
